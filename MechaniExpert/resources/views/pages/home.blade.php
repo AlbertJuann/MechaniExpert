@@ -12,7 +12,7 @@
         <a href="{{route('home') }}" class="text-3xl font-bold text-white">MECHANIEXPERT</a>
         <ul class="flex space-x-6">
             <li><a href="{{ url('/videos') }}" class="text-lg font-bold hover:text-blue-400">Video</a></li>
-            <li><a href="{{ url('/articles') }}" class="text-lg font-bold hover:text-blue-400">Artikel</a></li>
+            <li><a href="{{ url('/article-home-page') }}" class="text-lg font-bold hover:text-blue-400">Artikel</a></li>
             <li><a href="{{ url('/login') }}" class="text-lg font-bold hover:text-blue-400">Login</a></li>
             <li><a href="{{ url('/register') }}" class="text-lg font-bold hover:text-blue-400">Register</a></li>
         </ul>
@@ -61,16 +61,16 @@
     <footer class="bg-black mt-16 py-12 text-center shadow-md shadow-gray-800">
         <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-                <h1 class="text-xl font-bold">MECHANIEXPERT</h1>
+                <h1 class="text-3xl font-bold">MECHANIEXPERT</h1>
                 <p class="mt-2">Jl. MH. Thamrin, RT.002/RW.001, Panunggangan, Kec. Pinang, Kota Tangerang, Banten 15143</p>
             </div>
             <div>
-                <h1 class="text-xl font-bold">CONTACT US</h1>
+                <h1 class="text-3xl font-bold">CONTACT US</h1>
                 <p class="mt-2">MechaniExpert@Gmail.com</p>
                 <p>+62-812-7570-2455 (WA Only)</p>
             </div>
             <div>
-                <h1 class="text-xl font-bold">SOCIAL MEDIA</h1>
+                <h1 class="text-3xl font-bold">SOCIAL MEDIA</h1>
                 <div class="flex justify-center mt-2 space-x-4">
                     <a href="https://www.instagram.com/albert_juan7/"><img src="{{ asset('images/LogoIG.jpg') }}" class="w-10"></a>
                     <a href="https://www.facebook.com/albert.juan.144734/?locale=id_ID"><img src="{{ asset('images/LogoTiktok.png') }}" class="w-10"></a>
