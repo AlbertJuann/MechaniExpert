@@ -18,8 +18,13 @@ class PageController extends Controller
     }
 
     public function index_register(){
-        $title = "Register";
+        $title = "Register  | MechaniExpert";
         return view('pages.register', compact('title'));
+    }
+
+    public function index_forgot_password(){
+        $title = "Forgot Password  | MechaniExpert";
+        return view('pages.forgot-password', compact('title'));
     }
 
     public function index_profile(){

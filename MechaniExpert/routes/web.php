@@ -10,8 +10,19 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [PageController::class, 'index_home'])->name('index');
 Route::get('/home', [PageController::class, 'index_home'])->name('home');
+
+// Authentication
 Route::get('/login', [PageController::class, 'index_login'])->name('login');
+Route::post('/perform-login', [UserController::class, 'login'])->name('perform_login'); // Login
+Route::prefix('google')->name('google.')->group( function(){
+    Route::get('/auth', [UserController::class, 'loginWithGoogle'])->name('login'); // Login with Google
+    Route::any('/callback', [UserController::class, 'callbackFromGoogle'])->name('callback'); // Google Callback
+});
+Route::get('/forgot-password', [PageController::class, 'index_forgot_password'])->name('forgot_password');
 Route::get('/register', [PageController::class, 'index_register'])->name('register');
+Route::post('/perform_register', [UserController::class, 'register'])->name('perform_register'); // Register
+
+// MechaniExpert
 Route::get('/profile', [PageController::class, 'index_profile'])->name('profile');
 Route::get('/edit-profile', [PageController::class, 'index_edit_profile'])->name('edit_profile');
 Route::get('/edit-password', [PageController::class, 'index_edit_password'])->name('edit_password');
