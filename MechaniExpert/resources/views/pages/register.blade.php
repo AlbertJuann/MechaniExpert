@@ -5,7 +5,7 @@
     <!-- Container Register -->
     <div class="flex flex-col items-center w-full mt-32">
         <div class="bg-gray-900 p-12 rounded-lg shadow-2xl shadow-gray-800/60 w-full max-w-md text-center">
-            <h2 class="text-3xl mb-6 font-bold">Register ke MECHANIEXPERT</h2>
+            <h2 class="text-3xl text-white mb-6 font-bold">Register ke MECHANIEXPERT</h2>
             
             <!-- Form Register -->
             <form action="{{ route('perform_register') }}" method="post" class="w-full">
@@ -18,7 +18,7 @@
             </form>
             
             <!-- Link Login -->
-            <p class="mt-4 text-lg">Sudah punya akun? <a href="{{ url('/login') }}" class="text-blue-400 font-bold">Login di sini</a></p>
+            <p class="mt-4 text-lg text-white">Sudah punya akun? <a href="{{ url('/login') }}" class="text-blue-400 font-bold">Login di sini</a></p>
             
             <!-- Register dengan Google -->
             <div class="mt-4">

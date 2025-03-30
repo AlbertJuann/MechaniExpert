@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
     <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
 </head>
-<body class="bgc-navy pt-8">
+<body class="bgc-navy bg-black pt-8">
     @include('layouts.navbar')
     @yield('content')
     @include('layouts.footer')

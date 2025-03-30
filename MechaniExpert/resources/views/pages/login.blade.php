@@ -4,7 +4,7 @@
     <!-- Container Login -->
     <div class="flex flex-col items-center w-full mt-32">
         <div class="bg-gray-900 p-12 rounded-lg shadow-2xl shadow-gray-800/60 w-full max-w-md text-center">
-            <h2 class="text-3xl mb-6 font-bold">Login ke MECHANIEXPERT</h2>
+            <h2 class="text-3xl text-white mb-6 font-bold">Login ke MECHANIEXPERT</h2>
             
             <!-- Form Login -->
             <form method="post" action="{{ route('perform_login') }}" class="w-full">
@@ -16,7 +16,7 @@
                 @endif
                 <button type="submit" class="w-full bg-blue-500 text-white text-lg py-3 rounded-md hover:bg-blue-600">Login</button>
             </form>
-            <p class="mt-4 text-lg">Belum punya akun? <a href="{{ route('register') }}" class="text-blue-400 font-bold">Daftar di sini</a></p>
+            <p class="mt-4 text-lg text-white">Belum punya akun? <a href="{{ route('register') }}" class="text-blue-400 font-bold">Daftar di sini</a></p>
             <a href="{{ route('forgot_password') }}" class="text-blue-400 font-bold mt-2 block">Lupa Password?</a>
             
             <!-- Login dengan Google -->
@@ -27,4 +27,5 @@
             </div>
         </div>
     </div>
+    
 @endsection
