@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
-@section('content')
-
+@section('content') 
     <!-- Home Section -->
     <div class="container mx-auto mt-32 text-center px-6">
         <h1 class="text-4xl font-bold">Pelajari perawatan motor dengan mudah di MECHANIEXPERT</h1>

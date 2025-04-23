@@ -13,11 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('modules', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('thumbnail');
+            $table->string('thumbnail');
+            $table->text('excerpt');
+            $table->text('body');
             $table->string('slug')->unique();
+            $table->text('source')->nullable();
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }

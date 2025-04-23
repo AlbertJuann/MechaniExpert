@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -10,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="flex bg-[#000000] text-white font-sans">
-
     <!-- Sidebar -->
     <div class="w-[250px] h-screen bg-[#000000] p-5 fixed top-0 left-0 flex flex-col justify-between shadow-md shadow-gray-800 z-50">
     <div>
@@ -32,7 +28,8 @@
     <h1 class="text-2xl font-bold mb-4">Kelola Video</h1>
 
     <!-- Tombol Tambah -->
-    <a href="#" class="inline-block mb-4 px-4 py-2 bg-[#2ecc71] text-white rounded hover:opacity-90">Tambah Video</a>
+    <a href="{{ route("add_video") }}" class="inline-block mb-4 px-4 py-2 bg-[#2ecc71] text-white rounded hover:opacity-90">Tambah Video</a>
+    <a href="{{ route("video_category_control") }}" class="inline-block mb-4 px-4 py-2 bg-[#2ecc71] text-white rounded hover:opacity-90">Kelola Kategori</a>
 
     <!-- Tabel -->
     <div class="bg-[#222] p-6 rounded-lg shadow-md">
@@ -68,7 +65,6 @@
         </table>
     </div>
     </div>
-
 </body>
 </html>
 

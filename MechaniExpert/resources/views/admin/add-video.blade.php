@@ -28,23 +28,17 @@
     <div class="ml-[250px] min-h-screen p-10 bg-[#000000] flex items-center justify-center">
     <div class="w-full bg-[#222] rounded-xl shadow-lg shadow-gray-600 p-8 max-w-4xl">
         <h1 class="text-3xl font-bold text-center mb-6">Tambah Video Baru</h1>
-        <form>
-        <label for="judul" class="block mt-2">Judul Video</label>
-        <input type="text" id="judul" name="judul" required
-            class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" />
-
-        <label for="deskripsi" class="block mt-4">Deskripsi</label>
-        <textarea id="deskripsi" name="deskripsi" rows="4" required
-                class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none resize-none"></textarea>
-
-        <label for="video" class="block mt-4">Upload Video</label>
-        <input type="file" id="video" name="video" accept="video/*" required
-            class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" />
-
-        <button type="submit"
-                class="mt-6 w-full p-4 bg-[#00bfff] hover:bg-[#009acd] text-white text-lg font-semibold rounded">
-        Simpan
-        </button>
+        <form method="post" action="{{ route('videos.store') }}">
+            @csrf
+            <label for="judul" class="block mt-2">Judul Video</label>
+            <input type="text" id="judul" name="judul" required class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" />
+            <label for="deskripsi" class="block mt-4">Deskripsi</label>
+            <textarea id="deskripsi" name="deskripsi" rows="4" required class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none resize-none"></textarea>
+            <label for="video" class="block mt-4">Upload Video ( LINK )</label>
+            <input type="text" id="video" name="video" required class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" />
+            <label for="source" class="block mt-4">Source</label>
+            <input type="text" id="source" name="source" required class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" />
+            <button type="submit" class="mt-6 w-full p-4 bg-[#00bfff] hover:bg-[#009acd] text-white text-lg font-semibold rounded"> Simpan </button>
         </form>
     </div>
     </div>

@@ -32,15 +32,15 @@
         <!-- Stats -->
         <div class="flex justify-around mt-8 space-x-4">
             <div class="bg-[#333] p-6 rounded-xl text-center shadow-md w-[200px]">
-                <h2 class="text-2xl font-bold mb-2">50</h2>
+                <h2 class="text-2xl font-bold mb-2">{{ $videoCount }}</h2>
                 <p class="text-lg text-gray-300">Video</p>
             </div>
             <div class="bg-[#333] p-6 rounded-xl text-center shadow-md w-[200px]">
-                <h2 class="text-2xl font-bold mb-2">30</h2>
+                <h2 class="text-2xl font-bold mb-2">{{ $articleCount }}</h2>
                 <p class="text-lg text-gray-300">Artikel</p>
             </div>
             <div class="bg-[#333] p-6 rounded-xl text-center shadow-md w-[200px]">
-                <h2 class="text-2xl font-bold mb-2">200</h2>
+                <h2 class="text-2xl font-bold mb-2">{{ $userCount }}</h2>
                 <p class="text-lg text-gray-300">Pengguna</p>
             </div>
         </div>

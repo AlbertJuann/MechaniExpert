@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Video;
+use App\Models\Article;
+use App\Models\User;
+
 
 class PageController extends Controller
 {
     public function index_home(){
         $title = "Home | MechaniExpert";
-        return view('pages.home', compact('title'));
+        return view('index', compact('title'));
     }
 
     public function index_login(){
@@ -59,7 +64,7 @@ class PageController extends Controller
 
     public function index_articles(){
         $title = "articles | MechaniExpert";
-        return view('pages.articles', compact('title'));
+        return view('pages.article-homepage', compact('title'));
     }
 
     public function index_article(){
@@ -70,7 +75,10 @@ class PageController extends Controller
     // Admin Section
     public function index_dashboard(){
         $title = "Dashboard | MechaniExpert";
-        return view('admin.dashboard', compact('title'));
+        $videoCount = Video::count();
+        $articleCount = Article::count();
+        $userCount = User::count();
+        return view('admin.dashboard', compact('title', 'videoCount', 'articleCount', 'userCount'));
     }
 
     public function index_user_control(){
@@ -78,17 +86,17 @@ class PageController extends Controller
         return view('admin.user-control', compact('title'));
     }
 
-    public function index_article_dashboard(){
+    public function index_article_control(){
         $title = "Article Dashboard | MechaniExpert";
         return view('admin.article-control', compact('title'));
-    }
+    }   
 
-    public function index_video_dashboard(){
+    public function index_video_control(){
         $title = "Video Dashboard | MechaniExpert";
         return view('admin.video-control', compact('title'));
     }
 
-    public function index_video_category_dashboard(){
+    public function index_video_category_control(){
         $title = "Video Category Dashboard | MechaniExpert";
         return view('admin.video-category-control', compact('title'));
     }
