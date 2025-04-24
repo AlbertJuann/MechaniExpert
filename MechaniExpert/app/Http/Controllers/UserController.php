@@ -35,6 +35,30 @@ class UserController extends Controller
         return redirect()->route('login');
     }
 
+    // Store method for admin add user
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'username' => 'required|unique:users|max:30',
+            'name' => 'required|string|max:255',
+            'role' => 'required|integer|in:0,1',
+            'phone' => 'required|string|max:20',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|min:8',
+        ]);
+
+        $user = new User();
+        $user->username = $validated['username'];
+        $user->name = $validated['name'];
+        $user->role = $validated['role'];
+        $user->phone = $validated['phone'];
+        $user->email = $validated['email'];
+        $user->password = Hash::make($validated['password']);
+        $user->save();
+
+        return redirect()->route('user_control')->with('success', 'User berhasil ditambahkan.');
+    }
+
     // II. Log in
     public function login(LoginRequest $request){
         $credentials = $request->getCredentials();
@@ -108,5 +132,13 @@ class UserController extends Controller
         } catch (\throwable $th){
             throw $th;
         }
+    }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('user_control')->with('success', 'User berhasil dihapus.');
     }
 }

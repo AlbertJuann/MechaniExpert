@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Video;
 use App\Models\Article;
 use App\Models\User;
+use App\Models\VideoCategory;
 
 
 class PageController extends Controller
@@ -83,22 +84,26 @@ class PageController extends Controller
 
     public function index_user_control(){
         $title = "User Dashboard | MechaniExpert";
-        return view('admin.user-control', compact('title'));
+        $users = User::get();
+        return view('admin.user-control', compact('title', 'users'));
     }
 
     public function index_article_control(){
         $title = "Article Dashboard | MechaniExpert";
-        return view('admin.article-control', compact('title'));
+        $articles = Article::get();
+        return view('admin.article-control', compact('title', 'articles'));
     }   
 
     public function index_video_control(){
         $title = "Video Dashboard | MechaniExpert";
-        return view('admin.video-control', compact('title'));
+        $videos = Video::with('category')->get();
+        return view('admin.video-control', compact('title', 'videos'));
     }
 
     public function index_video_category_control(){
         $title = "Video Category Dashboard | MechaniExpert";
-        return view('admin.video-category-control', compact('title'));
+        $categories = VideoCategory::get();
+        return view('admin.video-category-control', compact('title', 'categories'));
     }
 
     public function index_add_article(){
@@ -116,9 +121,10 @@ class PageController extends Controller
         return view('admin.add-video', compact('title'));
     }
 
-    public function index_edit_video(){
+    public function index_edit_video($id){
         $title = "Edit Video | MechaniExpert";
-        return view('admin.edit-video', compact('title'));
+        $video = Video::findOrFail($id);
+        return view('admin.edit-video', compact('title', 'video'));
     }
 
     public function index_add_video_category(){

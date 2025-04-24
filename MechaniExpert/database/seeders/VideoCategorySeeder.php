@@ -2,13 +2,12 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\VideoCategory;  // Use the appropriate model for your video categories
+use App\Models\VideoCategory;
 
 class VideoCategorySeeder extends Seeder
 {
     public function run()
     {
-        // Array of video category data
         $categories = [
             [
                 'id' => '1',
@@ -36,7 +35,6 @@ class VideoCategorySeeder extends Seeder
             ],
         ];
 
-        // Insert each category into the database
         foreach ($categories as $category) {
             VideoCategory::create($category);
         }

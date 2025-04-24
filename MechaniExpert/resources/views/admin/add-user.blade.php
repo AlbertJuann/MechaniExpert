@@ -28,28 +28,39 @@
 <div class="ml-[250px] bg-[#000000] min-h-screen flex items-center justify-center p-10">
   <div class="bg-[#222] p-8 rounded-xl w-full mx-10 shadow-lg shadow-gray-600">
     <h1 class="text-3xl font-bold text-center mb-6">Tambah User Baru</h1>
-    <form>
+    <form method="post" action="{{ route('users.store') }}">
+      @csrf
+      <!-- Username -->
+      <label for="username" class="block mt-2">Username</label>
+      <input type="text" id="username" name="username" placeholder="Masukkan username"
+             class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" required/>
+
       <!-- Nama Lengkap -->
-      <label for="nama" class="block mt-2">Nama Lengkap</label>
-      <input type="text" id="nama" placeholder="Masukkan nama lengkap"
-             class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none"/>
+      <label for="name" class="block mt-2">Nama Lengkap</label>
+      <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap"
+             class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" required/>
+
+      <!-- Phone -->
+      <label for="phone" class="block mt-2">Nomor Telepon</label>
+      <input type="text" id="phone" name="phone" placeholder="Masukkan nomor telepon"
+             class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" required/>
 
       <!-- Email -->
       <label for="email" class="block mt-4">Email</label>
-      <input type="email" id="email" placeholder="Masukkan email"
-             class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none"/>
+      <input type="email" id="email" name="email" placeholder="Masukkan email"
+             class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" required/>
 
       <!-- Password -->
       <label for="password" class="block mt-4">Password</label>
-      <input type="password" id="password" placeholder="Masukkan password"
-             class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none"/>
+      <input type="password" id="password" name="password" placeholder="Masukkan password"
+             class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" required/>
 
       <!-- Role -->
       <label for="role" class="block mt-4">Peran</label>
-      <select id="role" class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none">
+      <select id="role" name="role" class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" required>
         <option value="">Pilih peran</option>
-        <option value="admin">Admin</option>
-        <option value="user">User</option>
+        <option value="1">Admin</option>
+        <option value="0">User</option>
       </select>
 
       <!-- Tombol Submit -->

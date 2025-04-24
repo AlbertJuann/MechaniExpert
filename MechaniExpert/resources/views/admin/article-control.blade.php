@@ -29,7 +29,7 @@
     <h1 class="text-2xl font-bold mb-4">Kelola Artikel</h1>
 
     <!-- Tombol Tambah -->
-    <a href="#" class="inline-block mb-4 px-4 py-2 bg-[#2ecc71] text-white rounded hover:opacity-90">Tambah Artikel</a>
+    <a href="{{ route('add_article') }}" class="inline-block mb-4 px-4 py-2 bg-[#2ecc71] text-white rounded hover:opacity-90">Tambah Artikel</a>
 
     <!-- Tabel -->
     <div class="bg-[#222] p-6 rounded-lg shadow-md">
@@ -38,29 +38,24 @@
             <tr class="bg-[#333]">
             <th class="p-2 border border-[#444] text-left">ID</th>
             <th class="p-2 border border-[#444] text-left">Judul</th>
-            <th class="p-2 border border-[#444] text-left">Penulis</th>
             <th class="p-2 border border-[#444] text-left">Aksi</th>
             </tr>
         </thead>
         <tbody>
+            @foreach($articles as $article)
             <tr>
-            <td class="p-2 border border-[#444]">1</td>
-            <td class="p-2 border border-[#444]">Cara Merawat Mesin Motor</td>
-            <td class="p-2 border border-[#444]">Admin</td>
+            <td class="p-2 border border-[#444]">{{ $article->id }}</td>
+            <td class="p-2 border border-[#444]">{{ $article->title }}</td>
             <td class="p-2 border border-[#444]">
-                <a href="#" class="px-3 py-1 bg-[#f39c12] text-white rounded mr-2 hover:opacity-90">Edit</a>
-                <button class="px-3 py-1 bg-[#e74c3c] text-white rounded hover:opacity-90">Hapus</button>
+                <a href="{{ route('edit_article', ['id' => $article->id]) }}" class="px-3 py-1 bg-[#f39c12] text-white rounded mr-2 hover:opacity-90">Edit</a>
+                <form action="{{ route('articles.destroy', ['id' => $article->id]) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="px-3 py-1 bg-[#e74c3c] text-white rounded hover:opacity-90" onclick="return confirm('Are you sure you want to delete this article?')">Hapus</button>
+                </form>
             </td>
             </tr>
-            <tr>
-            <td class="p-2 border border-[#444]">2</td>
-            <td class="p-2 border border-[#444]">Tips Mengganti Oli Motor</td>
-            <td class="p-2 border border-[#444]">Admin</td>
-            <td class="p-2 border border-[#444]">
-                <a href="#" class="px-3 py-1 bg-[#f39c12] text-white rounded mr-2 hover:opacity-90">Edit</a>
-                <button class="px-3 py-1 bg-[#e74c3c] text-white rounded hover:opacity-90">Hapus</button>
-            </td>
-            </tr>
+            @endforeach
         </tbody>
         </table>
     </div>

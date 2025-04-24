@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Artikel - MechaniExpert</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Include CKEditor 4.21.0 from CDN -->
+    <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 </head>
 <body class="bg-[#000000] text-white font-sans flex">
 
@@ -28,29 +30,29 @@
 <div class="ml-[250px] w-full min-h-screen p-10">
     <div class="bg-[#222] p-8 rounded-xl w-full h-full shadow-lg shadow-gray-600">
         <h1 class="text-3xl font-bold mb-8 text-center">Tambah Artikel Baru</h1>
-        <form>
+        <form method="post" action="{{ route('articles.store') }}" enctype="multipart/form-data">
+            @csrf
             <div class="mb-6">
-                <label for="judul" class="block mb-2">Judul Artikel</label>
-                <input type="text" id="judul" placeholder="Masukkan judul artikel"
-                    class="w-full p-3 rounded bg-[#333] text-white border-none focus:outline-none">
+                <label for="title" class="block mb-2">Judul Artikel</label>
+                <input type="text" id="title" name="title" placeholder="Masukkan judul artikel"
+                    class="w-full p-3 rounded bg-[#333] text-white border-none focus:outline-none" required>
             </div>
 
             <div class="mb-6">
-                <label for="deskripsi" class="block mb-2">Deskripsi Singkat</label>
-                <input type="text" id="deskripsi" placeholder="Masukkan deskripsi singkat"
-                    class="w-full p-3 rounded bg-[#333] text-white border-none focus:outline-none">
+                <label for="excerpt" class="block mb-2">Deskripsi Singkat</label>
+                <input type="text" id="excerpt" name="excerpt" placeholder="Masukkan deskripsi singkat"
+                    class="w-full p-3 rounded bg-[#333] text-white border-none focus:outline-none" required>
             </div>
 
             <div class="mb-6">
-                <label for="konten" class="block mb-2">Konten Artikel</label>
-                <textarea id="konten" rows="6" placeholder="Masukkan konten artikel"
-                    class="w-full p-3 rounded bg-[#333] text-white border-none focus:outline-none resize-none"></textarea>
+                <label for="body" class="block mb-2">Konten Artikel</label>
+                <textarea id="body" name="body" rows="6" placeholder="Masukkan konten artikel"
+                    class="w-full p-3 rounded bg-[#333] text-white border-none focus:outline-none resize-none" required></textarea>
             </div>
 
             <div class="mb-6">
-                <label for="gambar" class="block mb-2">Gambar Artikel</label>
-                <input type="file" id="gambar" accept="image/*"
-                    class="w-full p-3 rounded bg-[#333] text-white file:bg-[#00bfff] file:border-none file:rounded file:px-4 file:py-2 file:text-white file:cursor-pointer file:hover:bg-[#009acd]">
+                <label for="thumbnail" class="block mb-2">Gambar Artikel</label>
+                <input type="text" id="thumbnail" name="thumbnail" class="w-full p-3 rounded bg-[#333] text-white" required>
             </div>
 
             <button type="submit"
@@ -60,6 +62,13 @@
         </form>
     </div>
 </div>
+
+<script>
+    CKEDITOR.replace('body', {
+        height: 300,
+        contentsCss: ['body {color: #fff; background-color: #1e1e1e; font-family: Helvetica, Arial, sans-serif; font-size: 14px;}']
+    });
+</script>
 
 </body>
 </html>

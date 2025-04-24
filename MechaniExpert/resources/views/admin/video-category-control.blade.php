@@ -36,7 +36,7 @@
     </div>
 
     <!-- Tombol Tambah Kategori -->
-    <a href="#" class="inline-block mb-4 px-4 py-2 bg-[#2ecc71] text-white rounded hover:opacity-90">Tambah Kategori</a>
+    <a href="{{ route("add_video_category")}}" class="inline-block mb-4 px-4 py-2 bg-[#2ecc71] text-white rounded hover:opacity-90">Tambah Kategori</a>
 
     <!-- Tabel Kategori -->
     <div class="bg-[#222] p-6 rounded-lg shadow-md">
@@ -49,23 +49,21 @@
           </tr>
         </thead>
         <tbody>
+        @foreach ($categories as $category)
           <tr>
-            <td class="p-2 border border-[#444]">1</td>
-            <td class="p-2 border border-[#444]">Perawatan Dasar Motor</td>
+            <td class="p-2 border border-[#444]">{{ $category->id }}</td>
+            <td class="p-2 border border-[#444]">{{ $category->title}}</td>
             <td class="p-2 border border-[#444]">
-              <a href="#" class="px-3 py-1 bg-[#f39c12] text-white rounded mr-2 hover:opacity-90">Edit</a>
-              <button class="px-3 py-1 bg-[#e74c3c] text-white rounded hover:opacity-90">Hapus</button>
-            </td>
-          </tr>
-          <tr>
-            <td class="p-2 border border-[#444]">2</td>
-            <td class="p-2 border border-[#444]">Cara Mengecek Tekanan Ban Motor</td>
-            <td class="p-2 border border-[#444]">
-              <a href="#" class="px-3 py-1 bg-[#f39c12] text-white rounded mr-2 hover:opacity-90">Edit</a>
-              <button class="px-3 py-1 bg-[#e74c3c] text-white rounded hover:opacity-90">Hapus</button>
+              <a href="{{ route('edit_video_category', ['id' => $category->id]) }}" class="px-3 py-1 bg-[#f39c12] text-white rounded mr-2 hover:opacity-90">Edit</a>
+              <form action="{{ route('video_categories.destroy', ['id' => $category->id]) }}" method="POST" style="display:inline;">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="px-3 py-1 bg-[#e74c3c] text-white rounded hover:opacity-90" onclick="return confirm('Are you sure you want to delete this category? note: this will impact all your videos.')">Hapus</button>
+              </form>
             </td>
           </tr>
         </tbody>
+        @endforeach
       </table>
     </div>
   </div>

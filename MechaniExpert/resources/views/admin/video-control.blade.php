@@ -43,24 +43,22 @@
             </tr>
         </thead>
         <tbody>
+            @foreach($videos as $video)
             <tr>
-            <td class="p-2 border border-[#444]">1</td>
-            <td class="p-2 border border-[#444]">Cara Mengganti Oli Mesin Motor Matic</td>
-            <td class="p-2 border border-[#444]">Perawatan Dasar Motor</td>
-            <td class="p-2 border border-[#444]">
-                <a href="#" class="px-3 py-1 bg-[#f39c12] text-white rounded mr-2 hover:opacity-90">Edit</a>
-                <button class="px-3 py-1 bg-[#e74c3c] text-white rounded hover:opacity-90">Hapus</button>
-            </td>
+                <td class="p-2 border border-[#444]">{{ $video->id }}</td>
+                <td class="p-2 border border-[#444]">{{ $video->title }}</td>
+                <td class="p-2 border border-[#444]">{{ $video->category ? $video->category->name : '-' }}</td>
+                <td class="p-2 border border-[#444]">
+                    <a href="{{ route('edit_video', ['id' => $video->id]) }}" class="px-3 py-1 bg-[#f39c12] text-white rounded mr-2 hover:opacity-90">Edit</a>
+                    <form action="{{ route('videos.destroy', ['id' => $video->id]) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="px-3 py-1 bg-[#e74c3c] text-white rounded hover:opacity-90" onclick="return confirm('Are you sure you want to delete this video?')">Hapus</button>
+                    </form>
+                </td>
             </tr>
-            <tr>
-            <td class="p-2 border border-[#444]">2</td>
-            <td class="p-2 border border-[#444]">Cara Melepas dan Memasang Busi Motor Yang Tepat</td>
-            <td class="p-2 border border-[#444]">Tutorial Dan DIY(Do It Yourself)</td>
-            <td class="p-2 border border-[#444]">
-            <a href="#" class="px-3 py-1 bg-[#f39c12] text-white rounded mr-2 hover:opacity-90">Edit</a>
-                <button class="px-3 py-1 bg-[#e74c3c] text-white rounded hover:opacity-90">Hapus</button>
-            </td>
-            </tr>
+            @endforeach
+
         </tbody>
         </table>
     </div>

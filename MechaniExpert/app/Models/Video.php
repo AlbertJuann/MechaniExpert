@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\VideoCategory;
+use App\Models\VideoCategory;
 use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
@@ -12,7 +12,7 @@ class Video extends Model
 
     protected $guarded = ['id'];
 
-    public function videoCategories(){
+    public function category(){
         return $this->belongsTo(VideoCategory::class);
     }
 }

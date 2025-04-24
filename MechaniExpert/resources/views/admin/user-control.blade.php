@@ -44,7 +44,7 @@
     </div>
 
     <!-- Tombol Tambah User -->
-    <a href="#" class="inline-block mb-4 px-4 py-2 bg-[#2ecc71] text-white rounded hover:opacity-90">Tambah User</a>
+    <a href="{{ route('add_user') }}" class="inline-block mb-4 px-4 py-2 bg-[#2ecc71] text-white rounded hover:opacity-90">Tambah User</a>
 
     <!-- Tabel User -->
     <div class="bg-[#222] p-6 rounded-lg shadow-md">
@@ -59,26 +59,22 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-            <td class="p-2 border border-[#444]">1</td>
-            <td class="p-2 border border-[#444]">Albert</td>
-            <td class="p-2 border border-[#444]">albert@gmail.com</td>
-            <td class="p-2 border border-[#444]">Admin</td>
-            <td class="p-2 border border-[#444]">
-                <a href="#" class="px-3 py-1 bg-[#f39c12] text-white rounded mr-2 hover:opacity-90">Edit</a>
-                <button class="px-3 py-1 bg-[#e74c3c] text-white rounded hover:opacity-90">Hapus</button>
-            </td>
-            </tr>
-            <tr>
-            <td class="p-2 border border-[#444]">2</td>
-            <td class="p-2 border border-[#444]">Juan</td>
-            <td class="p-2 border border-[#444]">juan@gmail.com</td>
-            <td class="p-2 border border-[#444]">User</td>
-            <td class="p-2 border border-[#444]">
-            <a href="#" class="px-3 py-1 bg-[#f39c12] text-white rounded mr-2 hover:opacity-90">Edit</a>
-                <button class="px-3 py-1 bg-[#e74c3c] text-white rounded hover:opacity-90">Hapus</button>
-            </td>
-            </tr>
+            @foreach($users as $user)
+                <tr>
+                <td class="p-2 border border-[#444]">{{ $user->id }}</td>
+                <td class="p-2 border border-[#444]">{{ $user->name }}</td>
+                <td class="p-2 border border-[#444]">{{ $user->email }}</td>
+                <td class="p-2 border border-[#444]">{{ $user->role }}</td>
+                <td class="p-2 border border-[#444]">
+                    <a href="{{ route('edit_user', ['id' => $user->id]) }}" class="px-3 py-1 bg-[#f39c12] text-white rounded mr-2 hover:opacity-90">Edit</a>
+                    <form action="{{ route('user.destroy', ['id' => $user->id]) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="px-3 py-1 bg-[#e74c3c] text-white rounded hover:opacity-90" onclick="return confirm('Are you sure you want to delete this user?')">Hapus</button>
+                    </form>
+                </td>
+                </tr>
+            @endforeach
         </tbody>
         </table>
     </div>

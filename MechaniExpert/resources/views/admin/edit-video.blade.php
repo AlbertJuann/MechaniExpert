@@ -27,23 +27,28 @@
     <main class="ml-64 w-full p-8 mt-6">
         <div class="bg-[#222] p-6 rounded-lg shadow-md">
         <h1 class="text-3xl font-bold mb-6 text-center">Edit Video</h1>
-            <label for="title" class="block mt-4 mb-1 font-semibold">Judul Video</label>
-            <input type="text" id="title" value="Judul Video Contoh" class="w-full p-3 rounded bg-[#333] text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <form method="POST" action="{{ route('videos.update', ['id' => $video->id]) }}" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+
+            <label for="judul" class="block mt-4 mb-1 font-semibold">Judul Video</label>
+            <input type="text" id="judul" name="judul" value="{{ old('judul', $video->title) }}" class="w-full p-3 rounded bg-[#333] text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
 
             <label for="category" class="block mt-6 mb-1 font-semibold">Kategori</label>
-            <select id="category" class="w-full p-3 rounded bg-[#333] text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <option value="Perawatan Mesin">Perawatan Mesin</option>
-                <option value="Tips Berkendara">Tips Berkendara</option>
-                <option value="Modifikasi">Modifikasi</option>
+            <select id="category" name="category" class="w-full p-3 rounded bg-[#333] text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="Perawatan Mesin" {{ $video->category && $video->category->name == 'Perawatan Mesin' ? 'selected' : '' }}>Perawatan Mesin</option>
+                <option value="Tips Berkendara" {{ $video->category && $video->category->name == 'Tips Berkendara' ? 'selected' : '' }}>Tips Berkendara</option>
+                <option value="Modifikasi" {{ $video->category && $video->category->name == 'Modifikasi' ? 'selected' : '' }}>Modifikasi</option>
             </select>
 
-            <label for="description" class="block mt-6 mb-1 font-semibold">Deskripsi Video</label>
-            <textarea id="description" rows="6" class="w-full p-3 rounded bg-[#333] text-white focus:outline-none focus:ring-2 focus:ring-blue-500">Deskripsi video contoh...</textarea>
+            <label for="deskripsi" class="block mt-6 mb-1 font-semibold">Deskripsi Video</label>
+            <textarea id="deskripsi" name="deskripsi" rows="6" class="w-full p-3 rounded bg-[#333] text-white focus:outline-none focus:ring-2 focus:ring-blue-500">{{ old('deskripsi', $video->desc) }}</textarea>
 
-            <label for="video" class="block mt-6 mb-1 font-semibold">Unggah Video Baru</label>
-            <input type="file" id="video" class="w-full p-3 rounded bg-[#333] text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <label for="video" class="block mt-6 mb-1 font-semibold">Ubah Video</label>
+            <input type="text" id="video" name="video" value="{{ old('media', $video->media) }}" class="w-full p-3 rounded bg-[#333] text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
 
-            <button class="mt-6 bg-cyan-500 hover:bg-cyan-600 text-white px-5 py-2 rounded">Simpan Perubahan</button>
+            <button type="submit" class="mt-6 bg-cyan-500 hover:bg-cyan-600 text-white px-5 py-2 rounded">Simpan Perubahan</button>
+        </form>
         </div>
     </main>
 </body>

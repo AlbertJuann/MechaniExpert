@@ -25,14 +25,20 @@
 </div>
 
     <!-- Content -->
-    <div class="ml-[250px] bg-[#000000]flex flex-col w-full p-10 min-h-screen">
+    <div class="ml-[250px] bg-[#000000] flex flex-col w-full p-10 min-h-screen">
         <h1 class="text-3xl font-bold mb-6">Tambah Kategori Video</h1>
         <div class="bg-[#222] p-6 rounded-lg shadow-lg w-full max-w-xl">
-            <form>
+            <form method="post" action="{{ route('video_categories.store') }}">
+                @csrf
                 <div class="mb-4">
-                    <label for="kategori" class="block mb-2">Nama Kategori</label>
-                    <input type="text" id="kategori" name="kategori" placeholder="Masukkan nama kategori..."
-                        class="w-full p-3 rounded bg-[#333] text-white focus:outline-none focus:ring-2 focus:ring-[#5bc0de]">
+                    <label for="title" class="block mb-2">Nama Kategori</label>
+                    <input type="text" id="title" name="title" placeholder="Masukkan nama kategori..."
+                        class="w-full p-3 rounded bg-[#333] text-white focus:outline-none focus:ring-2 focus:ring-[#5bc0de]" required>
+                </div>
+                <div class="mb-4">
+                    <label for="thumbnail" class="block mb-2">Thumbnail URL</label>
+                    <input type="text" id="thumbnail" name="thumbnail" placeholder="Masukkan URL thumbnail..."
+                        class="w-full p-3 rounded bg-[#333] text-white focus:outline-none focus:ring-2 focus:ring-[#5bc0de]" required>
                 </div>
                 <button type="submit"
                     class="w-full py-3 bg-[#5bc0de] hover:bg-[#31b0d5] text-white font-semibold rounded">
