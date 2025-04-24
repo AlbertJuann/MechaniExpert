@@ -29,20 +29,6 @@
     <div class="ml-[250px] p-6 w-[calc(100%-250px)]">
     <h1 class="text-2xl font-bold mb-4">Kelola User</h1>
 
-    <!-- Form Pencarian dan Filter -->
-    <div class="mb-4 space-x-2">
-        <!-- Input pencarian -->
-        <input type="text" id="search" placeholder="Cari user..." class="p-2 rounded text-black" />
-        <!-- Dropdown filter role -->
-        <select id="roleFilter" class="p-2 rounded text-black">
-        <option value="">Semua Peran</option>
-        <option value="Admin">Admin</option>
-        <option value="User">User</option>
-        </select>
-        <!-- Tombol cari -->
-        <button class="p-2 bg-[#5bc0de] text-white rounded">Cari</button>
-    </div>
-
     <!-- Tombol Tambah User -->
     <a href="{{ route('add_user') }}" class="inline-block mb-4 px-4 py-2 bg-[#2ecc71] text-white rounded hover:opacity-90">Tambah User</a>
 

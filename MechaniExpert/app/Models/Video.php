@@ -13,6 +13,6 @@ class Video extends Model
     protected $guarded = ['id'];
 
     public function category(){
-        return $this->belongsTo(VideoCategory::class);
+        return $this->belongsTo(VideoCategory::class, 'module_id');
     }
 }

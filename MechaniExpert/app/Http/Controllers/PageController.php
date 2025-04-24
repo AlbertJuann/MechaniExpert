@@ -35,12 +35,14 @@ class PageController extends Controller
 
     public function index_profile(){
         $title = "Profile | MechaniExpert";
-        return view('pages.profile', compact('title'));
+        $user = Auth::user();
+        return view('pages.profile', compact('title', 'user'));
     }
 
     public function index_edit_profile(){
         $title = "Edit Profile | MechaniExpert";
-        return view('pages.edit-profile', compact('title'));
+        $user = Auth::user();
+        return view('pages.edit-profile', compact('title', 'user'));
     }
 
     public function index_edit_password(){
@@ -50,27 +52,33 @@ class PageController extends Controller
 
     public function index_videos(){
         $title = "Videos | MechaniExpert";
-        return view('pages.video-category', compact('title'));
+        $categories = VideoCategory::all();
+        return view('pages.video-category', compact('title', 'categories'));
     }
 
-    public function index_video_list(){
+    public function index_video_list($id){
         $title = "Video List | MechaniExpert";
-        return view('pages.video-list', compact('title'));
+        $videos = Video::where('module_id', $id)->get();
+        return view('pages.video-list', compact('title', 'videos'));
     }
 
-    public function index_video(){
-        $title = "Video | MechaniExpert";
-        return view('pages.video', compact('title'));
+    public function index_video($id){
+        $video = Video::findOrFail($id);
+        $title = $video->title . " | MechaniExpert";
+        $categoryId = $video->category_id;
+        return view('pages.video', compact('title', 'video', 'categoryId'));
     }
 
     public function index_articles(){
         $title = "articles | MechaniExpert";
-        return view('pages.article-homepage', compact('title'));
+        $articles = Article::paginate(6);
+        return view('pages.article-homepage', compact('title', 'articles'));
     }
 
-    public function index_article(){
-        $title = "article | MechaniExpert";
-        return view('pages.article', compact('title'));
+    public function index_article($slug){
+        $article = Article::where('slug', $slug)->firstOrFail();
+        $title = $article->title . " | MechaniExpert";
+        return view('pages.article', compact('title', 'article'));
     }
 
     // Admin Section
@@ -111,30 +119,34 @@ class PageController extends Controller
         return view('admin.add-article', compact('title'));
     }
 
-    public function index_edit_article(){
+    public function index_edit_article($id){
         $title = "Edit Article | MechaniExpert";
-        return view('admin.edit-article', compact('title'));
+        $article = Article::findOrFail($id);
+        return view('admin.edit-article', compact('title', 'article'));
     }
 
     public function index_add_video(){
         $title = "Add Video | MechaniExpert";
-        return view('admin.add-video', compact('title'));
+        $categories = VideoCategory::all();
+        return view('admin.add-video', compact('title', 'categories'));
     }
 
     public function index_edit_video($id){
         $title = "Edit Video | MechaniExpert";
         $video = Video::findOrFail($id);
-        return view('admin.edit-video', compact('title', 'video'));
+        $categories = VideoCategory::all();
+        return view('admin.edit-video', compact('title', 'video', 'categories'));
     }
 
     public function index_add_video_category(){
         $title = "Add Video Category | MechaniExpert";
         return view('admin.add-video-category', compact('title'));
     }
-
-    public function index_edit_video_category(){
+    
+    public function index_edit_video_category($id){
         $title = "Edit Video Category | MechaniExpert";
-        return view('admin.edit-video-category', compact('title'));
+        $category = VideoCategory::findOrFail($id);
+        return view('admin.edit-video-category', compact('title', 'category'));
     }
 
     public function index_add_user(){
@@ -142,8 +154,9 @@ class PageController extends Controller
         return view('admin.add-user', compact('title'));
     }
 
-    public function index_edit_user(){
+    public function index_edit_user($id){
         $title = "Edit User | MechaniExpert";
-        return view('admin.edit-user', compact('title'));
+        $user = User::findOrFail($id);
+        return view('admin.edit-user', compact('title', 'user'));
     }
 }

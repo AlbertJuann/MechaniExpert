@@ -32,6 +32,12 @@
             @csrf
             <label for="judul" class="block mt-2">Judul Video</label>
             <input type="text" id="judul" name="judul" required class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" />
+            <label for="category" class="block mt-4">Kategori</label>
+            <select id="category" name="category" required class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none">
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                @endforeach
+            </select>
             <label for="deskripsi" class="block mt-4">Deskripsi</label>
             <textarea id="deskripsi" name="deskripsi" rows="4" required class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none resize-none"></textarea>
             <label for="video" class="block mt-4">Upload Video ( LINK )</label>

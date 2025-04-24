@@ -36,16 +36,21 @@
 
             <label for="category" class="block mt-6 mb-1 font-semibold">Kategori</label>
             <select id="category" name="category" class="w-full p-3 rounded bg-[#333] text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <option value="Perawatan Mesin" {{ $video->category && $video->category->name == 'Perawatan Mesin' ? 'selected' : '' }}>Perawatan Mesin</option>
-                <option value="Tips Berkendara" {{ $video->category && $video->category->name == 'Tips Berkendara' ? 'selected' : '' }}>Tips Berkendara</option>
-                <option value="Modifikasi" {{ $video->category && $video->category->name == 'Modifikasi' ? 'selected' : '' }}>Modifikasi</option>
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}" {{ $video->module_id == $category->id ? 'selected' : '' }}>
+                        {{ $category->title }}
+                    </option>
+                @endforeach
             </select>
 
             <label for="deskripsi" class="block mt-6 mb-1 font-semibold">Deskripsi Video</label>
             <textarea id="deskripsi" name="deskripsi" rows="6" class="w-full p-3 rounded bg-[#333] text-white focus:outline-none focus:ring-2 focus:ring-blue-500">{{ old('deskripsi', $video->desc) }}</textarea>
 
             <label for="video" class="block mt-6 mb-1 font-semibold">Ubah Video</label>
-            <input type="text" id="video" name="video" value="{{ old('media', $video->media) }}" class="w-full p-3 rounded bg-[#333] text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <input type="text" id="video" name="video" value="{{ old('video', $video->media) }}" class="w-full p-3 rounded bg-[#333] text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+            <label for="source" class="block mt-6 mb-1 font-semibold">Source</label>
+            <input type="text" id="source" name="source" value="{{ old('source', $video->source) }}" class="w-full p-3 rounded bg-[#333] text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
 
             <button type="submit" class="mt-6 bg-cyan-500 hover:bg-cyan-600 text-white px-5 py-2 rounded">Simpan Perubahan</button>
         </form>

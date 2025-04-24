@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Validation\Rule;
 use Laravel\Socialite\Facades\Socialite;
+use \Illuminate\Support\Facades\Password;
 
 class UserController extends Controller
 {
@@ -33,6 +34,49 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->route('login');
+    }
+
+    public function showResetForm($token)
+    {
+        return view('pages.reset-password', ['token' => $token]);
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $request->validate([
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:8',
+        ]);
+
+        $status = Password::reset(
+            $request->only('email', 'password', 'password_confirmation', 'token'),
+            function ($user, $password) {
+                $user->password = Hash::make($password);
+                $user->save();
+            }
+        );
+
+        if ($status == Password::PASSWORD_RESET) {
+            return redirect()->route('login')->with('status', __($status));
+        } else {
+            return back()->withErrors(['email' => [__($status)]]);
+        }
+    }
+
+    public function sendResetLinkEmail(Request $request)
+    {
+        $request->validate(['email' => 'required|email']);
+
+        $status = Password::sendResetLink(
+            $request->only('email')
+        );
+
+        if ($status == Password::RESET_LINK_SENT) {
+            return back()->with(['status' => __($status)]);
+        } else {
+            return back()->withErrors(['email' => __($status)]);
+        }
     }
 
     // Store method for admin add user
@@ -140,5 +184,46 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('user_control')->with('success', 'User berhasil dihapus.');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
+            'password' => 'nullable|string|min:8',
+            'role' => 'required|integer|in:0,1',
+        ]);
+
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+        $user->role = $validated['role'];
+
+        if (!empty($validated['password'])) {
+            $user->password = Hash::make($validated['password']);
+        }
+
+        $user->save();
+
+        return redirect()->route('user_control')->with('success', 'User berhasil diperbarui.');
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = auth()->user();
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
+        ]);
+
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+
+        $user->save();
+
+        return redirect()->route('profile')->with('success', 'Profile updated successfully.');
     }
 }

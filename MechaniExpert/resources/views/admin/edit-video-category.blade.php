@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Edit Kategori Video - MechaniExpert</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function confirmDelete() {
+            return confirm('This action will delete your entire video in this category. Are you sure?');
+        }
+    </script>
 </head>
 <body class="bg-[#1e1e1e] text-white font-sans">
 
@@ -26,28 +31,22 @@
 
     <!-- Main Content Full Width -->
     <div class="ml-[250px] min-h-screen p-8 bg-[#000000]">
-    <form class="bg-[#222] p-8 rounded-xl shadow-lg shadow-gray-600 w-full">
+    <form method="POST" action="{{ route('video_category_update', $category->id) }}" class="bg-[#222] p-8 rounded-xl shadow-lg shadow-gray-600 w-full">
+        @csrf
+        @method('PATCH')
         <h1 class="text-3xl font-bold mb-8 text-center">Edit Kategori Video</h1>
+
         <div class="mb-6">
-        <label for="old-category" class="block mb-2 font-semibold">Pilih Kategori Lama:</label>
-        <select id="old-category"
-                class="w-full p-3 rounded bg-[#333] text-white focus:outline-none">
-            <option value="otomotif">Otomotif</option>
-            <option value="teknologi">Teknologi</option>
-            <option value="edukasi">Edukasi</option>
-        </select>
+            <label for="title" class="block mb-2 font-semibold">Nama Kategori:</label>
+            <input type="text" id="title" name="title" value="{{ old('title', $category->title) }}" placeholder="Masukkan nama kategori" class="w-full p-3 rounded bg-[#333] text-white focus:outline-none" required />
         </div>
 
         <div class="mb-6">
-        <label for="new-category" class="block mb-2 font-semibold">Nama Kategori Baru:</label>
-        <input type="text" id="new-category" placeholder="Masukkan nama kategori baru"
-                class="w-full p-3 rounded bg-[#333] text-white focus:outline-none"/>
+            <label for="thumbnail" class="block mb-2 font-semibold">Thumbnail URL:</label>
+            <input type="text" id="thumbnail" name="thumbnail" value="{{ old('thumbnail', $category->thumbnail) }}" placeholder="Masukkan URL thumbnail" class="w-full p-3 rounded bg-[#333] text-white focus:outline-none" required />
         </div>
 
-        <button type="submit"
-                class="w-full p-3 bg-[#00bfff] hover:bg-[#009acd] text-white text-lg font-semibold rounded">
-        Simpan Perubahan
-        </button>
+        <button type="submit" class="w-full p-3 bg-[#00bfff] hover:bg-[#009acd] text-white text-lg font-semibold rounded"> Simpan Perubahan </button>
     </form>
     </div>
 
