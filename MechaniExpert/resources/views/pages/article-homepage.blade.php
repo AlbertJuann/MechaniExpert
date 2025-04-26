@@ -8,7 +8,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6">
             @foreach($articles as $article)
             <div class="bg-gray-800 p-5 rounded-xl shadow-lg">
-                <img src="{{ asset('images/LogoMechaniExpert.png') }}" class="w-full rounded-lg">
+                <img src="https://drive.google.com/thumbnail?id={{$article->thumbnail}}" class="w-full rounded-lg">
                 <h3 class="text-white mt-4 text-2xl font-semibold">{{ $article->title }}</h3>
                 <p class="mt-2 text-gray-400"> {{ $article->excerpt }}</p>
                 <a href="{{ route('article', ['slug' => $article->slug]) }}" class="mt-4 inline-block text-blue-400 font-bold text-lg hover:text-blue-500">Baca Selengkapnya</a>

@@ -13,7 +13,7 @@ class VideoCategory extends Model
     protected $fillable = ['title', 'thumbnail', 'slug'];
 
     public function videos(){
-        return $this->hasMany(Video::class);
+        return $this->hasMany(Video::class, 'module_id');
     }
 
     protected static function boot() {

@@ -32,28 +32,23 @@
       @csrf
       <!-- Username -->
       <label for="username" class="block mt-2">Username</label>
-      <input type="text" id="username" name="username" placeholder="Masukkan username"
-             class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" required/>
+      <input type="text" id="username" name="username" placeholder="Masukkan username" class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" required/>
 
       <!-- Nama Lengkap -->
       <label for="name" class="block mt-2">Nama Lengkap</label>
-      <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap"
-             class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" required/>
+      <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap" class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" required/>
 
       <!-- Phone -->
       <label for="phone" class="block mt-2">Nomor Telepon</label>
-      <input type="text" id="phone" name="phone" placeholder="Masukkan nomor telepon"
-             class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" required/>
+      <input type="text" id="phone" name="phone" placeholder="Masukkan nomor telepon" class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" required/>
 
       <!-- Email -->
       <label for="email" class="block mt-4">Email</label>
-      <input type="email" id="email" name="email" placeholder="Masukkan email"
-             class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" required/>
+      <input type="email" id="email" name="email" placeholder="Masukkan email" class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" required/>
 
       <!-- Password -->
       <label for="password" class="block mt-4">Password</label>
-      <input type="password" id="password" name="password" placeholder="Masukkan password"
-             class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" required/>
+      <input type="password" id="password" name="password" placeholder="Masukkan password" class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" required/>
 
       <!-- Role -->
       <label for="role" class="block mt-4">Peran</label>

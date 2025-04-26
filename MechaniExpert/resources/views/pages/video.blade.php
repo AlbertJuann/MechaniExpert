@@ -9,7 +9,7 @@
     <h2 class="text-3xl font-bold mb-6">{{ $video->title }}</h2>
     <div class="aspect-w-16 aspect-h-9">
         <iframe 
-            src="https://www.youtube.com/embed/{{ $video->youtube_id }}" 
+            src="https://www.youtube.com/embed/{{ $video->media }}" 
             title="{{ $video->title }}" 
             frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
