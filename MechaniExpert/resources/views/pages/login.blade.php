@@ -20,11 +20,11 @@
             {{-- <a href="{{ route('forgot_password') }}" class="text-blue-400 font-bold mt-2 block">Lupa Password?</a> --}}
             
             <!-- Login dengan Google -->
-            <div class="mt-4">
+            {{-- <div class="mt-4">
                 <a href="{{ route('google.login') }}" class="w-full bg-white text-black text-lg py-2 flex justify-center items-center rounded-md hover:bg-gray-200">
                     <img src="{{ asset('images/LogoGoogle.png') }}" alt="Google Logo" class="w-6 mr-2"> Login dengan Google
                 </a>
-            </div>
+            </div> --}}
         </div>
     </div>
     

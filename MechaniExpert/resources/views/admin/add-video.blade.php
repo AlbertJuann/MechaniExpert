@@ -42,6 +42,8 @@
             <textarea id="deskripsi" name="deskripsi" rows="4" required class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none resize-none"></textarea>
             <label for="video" class="block mt-4">Upload Video ( LINK )</label>
             <input type="text" id="video" name="video" required class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" />
+            <label for="quiz" class="block mt-4">Upload Quiz ( LINK )</label>
+            <input type="text" id="quiz" name="quiz" required class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" />
             <label for="source" class="block mt-4">Source</label>
             <input type="text" id="source" name="source" required class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" />
             <button type="submit" class="mt-6 w-full p-4 bg-[#00bfff] hover:bg-[#009acd] text-white text-lg font-semibold rounded"> Simpan </button>

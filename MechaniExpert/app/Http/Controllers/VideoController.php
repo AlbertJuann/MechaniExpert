@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Video;
 use App\Models\VideoCategory;
 use Illuminate\Support\Str;
+use App\Models\Comment;
+use Illuminate\Support\Facades\Validator;
 
 class VideoController extends Controller
 {
@@ -16,6 +18,7 @@ class VideoController extends Controller
             'judul' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'video' => 'required|string',
+            'quiz' => 'required|string',
             'source' => 'required|string',
             'category' => 'required|integer',
         ]);
@@ -27,7 +30,7 @@ class VideoController extends Controller
         $video->source = $validated['source'];
         $video->slug = Str::slug($validated['judul']);
         $video->module_id = $validated['category'];
-        $video->quiz = '';
+        $video->quiz = $validated['quiz'];
         $video->save();
 
         return redirect()->route('video_control')->with('success', 'Video berhasil ditambahkan.');
@@ -39,6 +42,7 @@ class VideoController extends Controller
             'judul' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'video' => 'required|string',
+            'quiz' => 'required|string',
             'source' => 'required|string',
             'category' => 'required|integer',
         ]);
@@ -47,6 +51,7 @@ class VideoController extends Controller
         $video->title = $validated['judul'];
         $video->desc = $validated['deskripsi'];
         $video->media = $validated['video'];
+        $video->quiz = $validated['quiz'];
         $video->source = $validated['source'];
         $video->slug = Str::slug($validated['judul']);
         $video->module_id = $validated['category'];
@@ -64,4 +69,24 @@ class VideoController extends Controller
         return redirect()->route('video_control')->with('success', 'Video berhasil dihapus.');
     }
 
+    public function storeComment(Request $request, $id)
+    {
+        $video = Video::findOrFail($id);
+
+        $validator = Validator::make($request->all(), [
+            'user_name' => 'required|string|max:255',
+            'comment_text' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $video->comments()->create([
+            'user_name' => $request->input('user_name'),
+            'comment_text' => $request->input('comment_text'),
+        ]);
+
+        return redirect()->back()->with('success', 'Comment added successfully.');
+    }
 }

@@ -15,4 +15,9 @@ class Video extends Model
     public function category(){
         return $this->belongsTo(VideoCategory::class, 'module_id');
     }
+
+    public function comments()
+    {
+        return $this->morphMany(\App\Models\Comment::class, 'commentable');
+    }
 }

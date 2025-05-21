@@ -49,6 +49,9 @@
             <label for="video" class="block mt-6 mb-1 font-semibold">Ubah Video</label>
             <input type="text" id="video" name="video" value="{{ old('video', $video->media) }}" class="w-full p-3 rounded bg-[#333] text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
 
+            <label for="quiz" class="block mt-4">Ubah Quiz ( LINK )</label>
+            <input type="text" id="quiz" name="quiz" required class="w-full p-3 mt-1 rounded bg-[#333] text-white focus:outline-none" />
+
             <label for="source" class="block mt-6 mb-1 font-semibold">Source</label>
             <input type="text" id="source" name="source" value="{{ old('source', $video->source) }}" class="w-full p-3 rounded bg-[#333] text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
 

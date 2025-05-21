@@ -8,6 +8,9 @@ use App\Http\Controllers\VideoCategoryController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\UserController;
 
+Route::post('/videos/{id}/comments', [VideoController::class, 'storeComment'])->name('videos.comments.store');
+Route::post('/articles/{id}/comments', [ArticleController::class, 'storeComment'])->name('articles.comments.store');
+
 
 // Universe
 Route::get('/', [PageController::class, 'index_home'])->name('index');
