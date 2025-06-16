@@ -8,6 +8,15 @@
             <h2 class="text-3xl text-white mb-6 font-bold">Register ke MECHANIEXPERT</h2>
             
             <!-- Form Register -->
+            @if ($errors->any())
+                <div class="mb-4 text-left">
+                    <ul class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form action="{{ route('perform_register') }}" method="post" class="w-full">
                 @csrf
                 <input type="text" name="username" placeholder="Username" class="w-full p-4 mb-4 border border-gray-400 rounded-md text-black focus:ring focus:ring-blue-400" required>
@@ -21,11 +30,11 @@
             <p class="mt-4 text-lg text-white">Sudah punya akun? <a href="{{ url('/login') }}" class="text-blue-400 font-bold">Login di sini</a></p>
             
             <!-- Register dengan Google -->
-            <div class="mt-4">
+            {{-- <div class="mt-4">
                 <a href="#" class="w-full bg-white text-black text-lg py-2 flex justify-center items-center rounded-md hover:bg-gray-200">
                     <img src="{{ asset('images/LogoGoogle.png') }}" alt="Google Logo" class="w-6 mr-2"> Daftar dengan Google
                 </a>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection
