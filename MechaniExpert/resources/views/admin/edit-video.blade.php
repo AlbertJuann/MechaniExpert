@@ -61,7 +61,7 @@
             <label for="source" class="block mt-6 mb-1 font-semibold">Source</label>
             <input type="text" id="source" name="source" value="{{ old('source', $video->source) }}" class="w-full p-3 rounded bg-[#333] text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
 
-            <button type="submit" class="mt-6 bg-cyan-500 hover:bg-cyan-600 text-white px-5 py-2 rounded">Simpan Perubahan</button>
+            <button type="submit" class="w-full mt-8 p-4 bg-[#00bfff] hover:bg-[#009acd] text-white text-lg font-semibold rounded">Simpan Perubahan</button>
         </form>
         </div>
     </main>
