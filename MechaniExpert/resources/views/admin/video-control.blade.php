@@ -18,9 +18,15 @@
         <li><a href="{{ url('/user-control') }}" class="block px-4 py-2 bg-[#333] rounded hover:bg-[#444]">Kelola User</a></li>
         </ul>
     </div>
-    <div class="pt-5">
-        <a href="#" class="block px-4 py-2 bg-red-600 hover:bg-red-700 rounded text-center">Logout</a>
-    </div>
+        <div class="pt-5">
+            <div class="space-y-4">
+                <a href="home" class="block px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded text-center">Home</a>
+                <form method="POST" action="{{ route('logout') }}" class="bg-red-600 hover:bg-red-700 rounded text-center block px-4 py-2">
+                    @csrf
+                    <button type="submit" class="text-white hover:underline block lg:inline border-none p-0 cursor-pointer">Logout</button>
+                </form>
+            </div>
+        </div>
     </div>
 
     <!-- Content -->

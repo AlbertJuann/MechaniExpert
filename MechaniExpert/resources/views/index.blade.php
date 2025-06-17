@@ -37,6 +37,10 @@
     <!-- CTA Section -->
     <div class="container mx-auto text-center mt-16 px-6">
         <h2 class="text-3xl font-bold">Mulai Belajar Sekarang!</h2>
-        <button onclick="location.href='{{ url('/register') }}'" class="mt-6 px-6 py-3 bg-blue-500 text-white text-lg rounded-md hover:bg-blue-600">Daftar Gratis</button>
+        @if (!Auth::check())
+            <button onclick="location.href='{{ url('/register') }}'" class="mt-6 px-6 py-3 bg-blue-500 text-white text-lg rounded-md hover:bg-blue-600">Daftar Gratis</button>
+        @else
+            <button onclick="location.href='{{ url('/videos') }}'" class="mt-6 px-6 py-3 bg-blue-500 text-white text-lg rounded-md hover:bg-blue-600">Nonton Video</button>
+        @endif
     </div>
 @endsection

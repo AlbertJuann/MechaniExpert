@@ -21,14 +21,20 @@
             <li><a href="{{ url('/user-control') }}" class="block px-4 py-2 bg-[#333] rounded hover:bg-[#444]">Kelola User</a></li>
         </ul>
     </div>
-    <div class="mt-10">
-        <a href="#" class="block px-4 py-2 bg-red-600 hover:bg-red-700 text-center rounded">Logout</a>
+    <div class="pt-5">
+        <div class="space-y-4">
+            <a href="home" class="block px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded text-center">Home</a>
+            <form method="POST" action="{{ route('logout') }}" class="bg-red-600 hover:bg-red-700 rounded text-center block px-4 py-2">
+                @csrf
+                <button type="submit" class="text-white hover:underline block lg:inline border-none p-0 cursor-pointer">Logout</button>
+            </form>
+        </div>
     </div>
 </div>
 
 <!-- Main Content -->
 <div class="ml-[250px] w-full min-h-screen p-10">
-    <div class="bg-[#222] p-8 rounded-xl w-full h-full shadow-lg shadow-gray-600">
+    <div class="bg-[#222] p-8 rounded-xl w-full shadow-lg shadow-gray-600">
         <h1 class="text-3xl font-bold mb-8 text-center">Tambah Artikel Baru</h1>
         <form method="post" action="{{ route('articles.store') }}" enctype="multipart/form-data">
             @csrf

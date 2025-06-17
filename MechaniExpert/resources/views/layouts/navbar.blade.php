@@ -17,6 +17,7 @@
             @if(Auth::user()->role == 0)
                 <li><a href="{{ route('videos') }}" class="text-lg font-bold text-white hover:text-blue-400 block lg:inline">Video</a></li>
                 <li><a href="{{ route('articles') }}" class="text-lg font-bold text-white hover:text-blue-400 block lg:inline">Artikel</a></li>
+                <li><a href="{{ route('profile') }}" class="text-lg font-bold text-white hover:text-blue-400 block lg:inline">Profile</a></li>
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
@@ -27,6 +28,7 @@
                 <li><a href="{{ route('dashboard') }}" class="text-lg font-bold text-white hover:text-blue-400 block lg:inline">Dashboard</a></li>
                 <li><a href="{{ route('videos') }}" class="text-lg font-bold text-white hover:text-blue-400 block lg:inline">Video</a></li>
                 <li><a href="{{ route('articles') }}" class="text-lg font-bold text-white hover:text-blue-400 block lg:inline">Artikel</a></li>
+                <li><a href="{{ route('profile') }}" class="text-lg font-bold text-white hover:text-blue-400 block lg:inline">Profile</a></li>
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
