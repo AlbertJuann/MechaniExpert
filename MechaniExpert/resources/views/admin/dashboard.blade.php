@@ -19,9 +19,12 @@
                 <li><a href="{{ url('/user-control') }}" class="block px-4 py-2 bg-[#333] rounded hover:bg-[#444]">Kelola User</a></li>
             </ul>
         </div>
-        <div class="mt-10">
+        {{-- <div class="mt-10">
             <a href="{{ route('logout') }}" class="text-lg font-bold text-white hover:underline">Logout</a>
-        </div>
+        </div> --}}
+        <div class="pt-5">
+        <a href="#" class="block px-4 py-2 bg-red-600 hover:bg-red-700 rounded text-center">Logout</a>
+    </div>
     </div>
 
     <!-- Content -->
