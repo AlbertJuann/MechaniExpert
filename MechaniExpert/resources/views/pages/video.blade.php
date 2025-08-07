@@ -1,4 +1,4 @@
-    @extends('layouts.main')
+@extends('layouts.main')
 
 @section('content')
 
@@ -19,7 +19,7 @@
     </div>
     <p class="mt-4 text-white">{{ $video->desc }}</p>
     <p class="mt-4 text-white">{{ $video->source }}</p>
-    <a href="{{ $video->quiz }}" target="_blank" class="inline-block mt-4 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+    <a href="{{ route('quiz.show', $video->id) }}" class="inline-block mt-4 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
         Start a quiz
     </a>
 

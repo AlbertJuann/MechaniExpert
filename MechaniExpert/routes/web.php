@@ -7,6 +7,8 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\VideoCategoryController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\Admin\QuizAdminController;
 
 Route::post('/videos/{id}/comments', [VideoController::class, 'storeComment'])->name('videos.comments.store');
 Route::post('/articles/{id}/comments', [ArticleController::class, 'storeComment'])->name('articles.comments.store');
@@ -42,6 +44,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/video/{id}', [PageController::class, 'index_video'])->name('video');
     Route::get('/articles', [PageController::class, 'index_articles'])->name('articles');
     Route::get('/article/{slug}', [PageController::class, 'index_article'])->name('article');
+    Route::get('/video/{id}/quiz', [QuizController::class, 'show'])->name('quiz.show');
+    Route::post('/video/{id}/quiz', [QuizController::class, 'submit'])->name('quiz.submit');
 });
 
 Route::get('/password/reset/{token}', [UserController::class, 'showResetForm'])->name('password.reset');
@@ -85,4 +89,13 @@ Route::group(['middleware' => ['admin']], function() {
     Route::delete('/articles/{id}', [ArticleController::class, 'destroy'])->name('articles.destroy');
     Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('user.destroy');
     Route::delete('/video-categories/{id}', [VideoCategoryController::class, 'destroy'])->name('video_categories.destroy');
+
+    // Quiz Management
+    Route::get('/quiz-control', [QuizAdminController::class, 'index'])->name('admin.quiz.index');
+    Route::get('/quiz-control/{video}', [QuizAdminController::class, 'show'])->name('admin.quiz.show');
+    Route::get('/quiz-control/{video}/create', [QuizAdminController::class, 'create'])->name('admin.quiz.create');
+    Route::post('/quiz-control/{video}', [QuizAdminController::class, 'store'])->name('admin.quiz.store');
+    Route::get('/quiz-control/quiz/{quiz}/edit', [QuizAdminController::class, 'edit'])->name('admin.quiz.edit');
+    Route::put('/quiz-control/quiz/{quiz}', [QuizAdminController::class, 'update'])->name('admin.quiz.update');
+    Route::delete('/quiz-control/quiz/{quiz}', [QuizAdminController::class, 'destroy'])->name('admin.quiz.destroy');
 });

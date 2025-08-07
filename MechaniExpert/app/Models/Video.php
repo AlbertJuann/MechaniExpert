@@ -20,4 +20,9 @@ class Video extends Model
     {
         return $this->morphMany(\App\Models\Comment::class, 'commentable');
     }
+
+    public function quizzes()
+    {
+        return $this->hasMany(\App\Models\Quiz::class);
+    }
 }
