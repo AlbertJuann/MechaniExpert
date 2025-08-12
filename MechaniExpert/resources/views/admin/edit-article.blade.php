@@ -70,6 +70,7 @@
                 <li><a href="{{ url('/video-control') }}" class="block px-4 py-2 bg-[#333] rounded hover:bg-[#444]">Kelola Video</a></li>
                 <li><a href="{{ url('/article-control') }}" class="block px-4 py-2 bg-[#333] rounded hover:bg-[#444]">Kelola Artikel</a></li>
                 <li><a href="{{ url('/user-control') }}" class="block px-4 py-2 bg-[#333] rounded hover:bg-[#444]">Kelola User</a></li>
+                <li><a href="{{ url('/quiz-control') }}" class="block px-4 py-2 bg-[#333] rounded hover:bg-[#444]">Kelola Quiz</a></li>
             </ul>
         </div>
         <div class="pt-5">

@@ -53,7 +53,7 @@
                         @endfor
                     </select>
                 </div>
-                <button type="submit" class="w-full bg-[#00bfff] text-white text-lg py-3 rounded hover:bg-[#0099cc]">Simpan</button>
+                <button type="submit" class="w-full bg-[#00bfff] text-white text-lg py-3 rounded hover:bg-[#0099cc]">Tambah Quiz</button>
                 <a href="{{ route('admin.quiz.show', $video->id) }}" class="block text-center mt-4 text-gray-300">Batal</a>
             </form>
         </div>

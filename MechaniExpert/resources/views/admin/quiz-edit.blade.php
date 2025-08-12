@@ -54,7 +54,7 @@
                         @endforeach
                     </select>
                 </div>
-                <button type="submit" class="w-full bg-[#00bfff] text-white text-lg py-3 rounded hover:bg-[#0099cc]">Update</button>
+                <button type="submit" class="w-full bg-[#00bfff] text-white text-lg py-3 rounded hover:bg-[#0099cc]">Simpan Perubahan</button>
                 <a href="{{ route('admin.quiz.show', $quiz->video_id) }}" class="block text-center mt-4 text-gray-300">Batal</a>
             </form>
         </div>

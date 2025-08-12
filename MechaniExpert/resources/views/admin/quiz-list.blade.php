@@ -33,7 +33,7 @@
                         <form action="{{ route('admin.quiz.destroy', $quiz->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="px-3 py-1 bg-[#e74c3c] text-white rounded hover:opacity-90" onclick="return confirm('Hapus quiz ini?')">Hapus</button>
+                            <button type="submit" class="px-3 py-1 bg-[#e74c3c] text-white rounded hover:opacity-90" onclick="return confirm('Are you sure you want to delete this quiz?')">Hapus</button>
                         </form>
                     </td>
                 </tr>

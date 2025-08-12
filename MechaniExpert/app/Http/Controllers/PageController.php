@@ -71,7 +71,7 @@ class PageController extends Controller
 
     public function index_articles(){
         $title = "articles | MechaniExpert";
-        $articles = Article::paginate(6);
+        $articles = Article::paginate(3);
         return view('pages.article-homepage', compact('title', 'articles'));
     }
 
