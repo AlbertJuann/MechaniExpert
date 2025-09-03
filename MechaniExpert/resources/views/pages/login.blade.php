@@ -17,7 +17,41 @@
                 <button type="submit" class="w-full bg-blue-500 text-white text-lg py-3 rounded-md hover:bg-blue-600">Login</button>
             </form>
             <p class="mt-4 text-lg text-white">Belum punya akun? <a href="{{ route('register') }}" class="text-blue-400 font-bold">Daftar di sini</a></p>
-            {{-- <a href="{{ route('forgot_password') }}" class="text-blue-400 font-bold mt-2 block">Lupa Password?</a> --}}
+            
+        </div>
+    </div>
+    
+@endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{-- <a href="{{ route('forgot_password') }}" class="text-blue-400 font-bold mt-2 block">Lupa Password?</a> --}}
             
             <!-- Login dengan Google -->
             {{-- <div class="mt-4">
@@ -25,7 +59,3 @@
                     <img src="{{ asset('images/LogoGoogle.png') }}" alt="Google Logo" class="w-6 mr-2"> Login dengan Google
                 </a>
             </div> --}}
-        </div>
-    </div>
-    
-@endsection

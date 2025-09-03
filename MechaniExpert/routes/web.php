@@ -22,10 +22,6 @@ Route::get('/home', [PageController::class, 'index_home'])->name('home');
 Route::group(['middleware' => ['guest']], function() {
     Route::get('/login', [PageController::class, 'index_login'])->name('login');
     Route::post('/perform-login', [UserController::class, 'login'])->name('perform_login');
-    // Route::prefix('google')->name('google.')->group( function(){
-        // Route::get('/auth', [UserController::class, 'loginWithGoogle'])->name('login');
-        // Route::any('/callback', [UserController::class, 'callbackFromGoogle'])->name('callback');
-    // });
     Route::get('/forgot-password', [PageController::class, 'index_forgot_password'])->name('forgot_password');
     Route::post('/forgot-password', [UserController::class, 'sendResetLinkEmail'])->name('forgot_password.post');
     Route::get('/register', [PageController::class, 'index_register'])->name('register');
@@ -99,3 +95,45 @@ Route::group(['middleware' => ['admin']], function() {
     Route::put('/quiz-control/quiz/{quiz}', [QuizAdminController::class, 'update'])->name('admin.quiz.update');
     Route::delete('/quiz-control/quiz/{quiz}', [QuizAdminController::class, 'destroy'])->name('admin.quiz.destroy');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Route::prefix('google')->name('google.')->group( function(){
+        // Route::get('/auth', [UserController::class, 'loginWithGoogle'])->name('login');
+        // Route::any('/callback', [UserController::class, 'callbackFromGoogle'])->name('callback');
+    // });
